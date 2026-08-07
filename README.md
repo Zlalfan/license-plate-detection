@@ -78,9 +78,17 @@ Dataset terdiri dari **4.167 citra** dengan **36 kelas karakter**, yaitu huruf *
 | Platform | Google Colab (GPU NVIDIA Tesla T4) |
 
 
-## 📈 Kurva Evaluasi
+## 📊 Hasil Pelatihan
+
+Model YOLOv5s, YOLOv8s, dan YOLOv11s dilatih menggunakan konfigurasi parameter yang sama selama 40 epoch. Berikut merupakan hasil pelatihan dari masing-masing model.
 
 ### YOLOv5s
+
+#### Hasil Pelatihan
+
+![YOLOv5 Results](Training/YOLOv5s/results.png)
+
+#### Kurva Evaluasi
 
 | Precision | Recall |
 |-----------|--------|
@@ -94,6 +102,12 @@ Dataset terdiri dari **4.167 citra** dengan **36 kelas karakter**, yaitu huruf *
 
 ### YOLOv8s
 
+#### Hasil Pelatihan
+
+![YOLOv8 Results](Training/YOLOv8s/results.png)
+
+#### Kurva Evaluasi
+
 | Precision | Recall |
 |-----------|--------|
 | ![](Training/YOLOv8s/BoxP_curve.png) | ![](Training/YOLOv8s/BoxR_curve.png) |
@@ -105,6 +119,12 @@ Dataset terdiri dari **4.167 citra** dengan **36 kelas karakter**, yaitu huruf *
 ---
 
 ### YOLOv11s
+
+#### Hasil Pelatihan
+
+![YOLOv11 Results](Training/YOLOv11s/results.png)
+
+#### Kurva Evaluasi
 
 | Precision | Recall |
 |-----------|--------|
