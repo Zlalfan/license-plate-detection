@@ -76,3 +76,40 @@ Dataset terdiri dari **4.167 citra** dengan **36 kelas karakter**, yaitu huruf *
 | Epoch | 40 |
 | Image Size | 832 × 832 |
 | Platform | Google Colab (GPU NVIDIA Tesla T4) |
+
+
+## 📈 Kurva Evaluasi
+
+### YOLOv5s
+
+| Precision | Recall |
+|-----------|--------|
+| ![](Training/YOLOv5s/P_curve.png) | ![](Training/YOLOv5s/R_curve.png) |
+
+| F1-Score |
+|-----------|
+| ![](Training/YOLOv5s/F1_curve.png) |
+
+---
+
+### YOLOv8s
+
+| Precision | Recall |
+|-----------|--------|
+| ![](Training/YOLOv8s/BoxP_curve.png) | ![](Training/YOLOv8s/BoxR_curve.png) |
+
+| F1-Score |
+|-----------|
+| ![](Training/YOLOv8s/BoxF1_curve.png) |
+
+---
+
+### YOLOv11s
+
+| Precision | Recall |
+|-----------|--------|
+| ![](Training/YOLOv11s/BoxP_curve.png) | ![](Training/YOLOv11s/BoxR_curve.png) |
+
+| F1-Score |
+|-----------|
+| ![](Training/YOLOv11s/BoxF1_curve.png) |
