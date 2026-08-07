@@ -1,62 +1,78 @@
-# VehiScan
+## 📖 Overview
 
-Web app deteksi kendaraan (motor, mobil, bus, truck) + plat nomor, dengan pilihan
-3 varian model deteksi (YOLOv5s / YOLOv8s / YOLOv11s) dan model pembaca karakter
-plat terpisah (YOLOv11s).
+Proyek ini merupakan sistem deteksi dan pembacaan plat nomor kendaraan berbasis Deep Learning menggunakan model YOLO. Sistem bekerja dalam dua tahap, yaitu mendeteksi lokasi plat nomor pada kendaraan, kemudian mendeteksi setiap karakter pada plat nomor menggunakan model YOLO yang telah dilatih secara khusus.
 
-## Struktur
+Model deteksi plat nomor dibandingkan menggunakan tiga arsitektur, yaitu **YOLOv5s**, **YOLOv8s**, dan **YOLOv11s** untuk mengevaluasi performa berdasarkan metrik Precision, Recall, F1-Score, dan mAP@0.5. Selanjutnya, hasil deteksi plat nomor diproses oleh model YOLO karakter untuk menghasilkan susunan karakter plat nomor secara otomatis.
 
-```
-vehiscan/
-├── main.py           # FastAPI app + semua endpoint
-├── config.py         # daftar model, nama kelas, warna anotasi
-├── detector.py        # wrapper deteksi kendaraan+plat (5 kelas)
-├── plate_ocr.py        # wrapper pembaca karakter plat
-├── pipeline.py         # gabungan: deteksi -> crop plat -> OCR -> gambar anotasi
-├── video_jobs.py       # job background untuk proses video + tracking + progress
-├── requirements.txt
-├── weights/            # Taruh model .pt disni (yolov11s_plate_ocr.pt, yolov11s_vehicle.pt, yolov5s_vehicle.pt, yolov8s_vehicle.pt)
-├── uploads/            # (otomatis) file upload sementara
-├── outputs/            # (otomatis) hasil anotasi gambar/video
-└── static/             # frontend
-    ├── index.html
-    ├── style.css
-    └── script.js
-```
+## 📂 Dataset
 
-## Cara jalanin
+Pada proyek ini digunakan dua dataset yang berbeda, yaitu dataset untuk **deteksi plat nomor kendaraan** dan dataset untuk **deteksi karakter plat nomor**.
 
-1. Taruh 4 file bobot lo di `weights/` (lihat `weights/README.md` buat nama
-   file yang diharapkan — atau ganti nama filenya di `config.py`).
+### Dataset Deteksi Plat Nomor
 
-2. Install dependency (dari folder `vehiscan/`):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+Dataset deteksi plat nomor dikumpulkan secara langsung di wilayah Kota Bima dan telah melalui proses anotasi menggunakan Roboflow. Dataset ini terdiri dari **2.000 citra** dengan dua objek utama yang dideteksi, yaitu **plat nomor** dan **kendaraan**. Objek kendaraan terdiri dari empat jenis, yaitu **sepeda motor**, **mobil**, **truk**, dan **bus**.
 
-3. Jalanin server:
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
+#### Kelas Dataset
 
-4. Buka `http://127.0.0.1:8000` di browser.
+| Kelas | Deskripsi |
+|--------|-----------|
+| Plat Nomor | Area plat nomor kendaraan |
+| Kendaraan | Terdiri dari sepeda motor, mobil, truk, dan bus |
 
-## Alur sistem
+#### Jumlah Dataset
 
-1. User pilih model deteksi (v5s/v8s/v11s) dan upload gambar atau video.
-2. **Gambar**: `POST /api/detect/image` → jalan sinkron, langsung balikin hasil.
-3. **Video**: `POST /api/detect/video/start` → balikin `job_id`, diproses di
-   background thread pakai tracking (ByteTrack) supaya tiap kendaraan cuma
-   dihitung sekali. Frontend polling `GET /api/detect/video/status/{job_id}`
-   tiap 1 detik buat progress bar.
-4. Tiap bbox kelas `plat` yang kedeteksi di-crop, dikirim ke model OCR
-   karakter (`plate_ocr.py`), hasil karakter diurutkan kiri→kanan jadi string
-   plat, lalu digambar sebagai label di frame hasil anotasi.
+- Total Data : **2.000 citra**
 
-## Yang perlu lo sesuaikan
+#### Pembagian Dataset
 
-- **YOLOv5 dari repo asli** (bukan ultralytics package) butuh loader beda —
-- **Estimasi kecepatan** Sesuaikan config dengan spek kalian agar kecepatan fps nya lebih sesuia dengan kemampuan pc kalian
+| Dataset | Persentase |
+|----------|-----------:|
+| Training | 70% |
+| Validation | 20% |
+| Testing | 10% |
 
+
+### Dataset Deteksi Karakter
+
+Dataset deteksi karakter digunakan untuk melatih model YOLO agar mampu mengenali setiap karakter pada plat nomor kendaraan. Dataset ini diperoleh dari hasil *cropping* plat nomor, kemudian setiap huruf dan angka dianotasi menggunakan Roboflow.
+
+Dataset terdiri dari **4.167 citra** dengan **36 kelas karakter**, yaitu huruf **A–Z** dan angka **0–9**.
+
+#### Jumlah Dataset
+
+- Total Data : **4.167 citra**
+
+#### Pembagian Dataset
+
+| Dataset | Persentase |
+|----------|-----------:|
+| Training | 80% |
+| Validation | 10% |
+| Testing | 10% |
+
+
+## ⚙️ Konfigurasi Pelatihan
+
+### Model Deteksi Plat Nomor
+
+| Parameter | Nilai |
+|-----------|--------|
+| Model | YOLOv5s, YOLOv8s, YOLOv11s |
+| Optimizer | SGD |
+| Learning Rate | 0.01 |
+| Batch Size | 16 |
+| Epoch | 40 |
+| Image Size | 832 × 832 |
+| Platform | Google Colab (GPU NVIDIA Tesla T4) |
+
+### Model Deteksi Karakter
+
+| Parameter | Nilai |
+|-----------|--------|
+| Model | YOLOv11s |
+| Optimizer | SGD |
+| Learning Rate | 0.01 |
+| Batch Size | 16 |
+| Epoch | 40 |
+| Image Size | 832 × 832 |
+| Platform | Google Colab (GPU NVIDIA Tesla T4) |
