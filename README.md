@@ -15,7 +15,7 @@ vehiscan/
 ├── pipeline.py         # gabungan: deteksi -> crop plat -> OCR -> gambar anotasi
 ├── video_jobs.py       # job background untuk proses video + tracking + progress
 ├── requirements.txt
-├── weights/            # >>> TARUH FILE .pt LO DI SINI <<<
+├── weights/            # >>> Model sudah ada (YOLO v5s,v8s,v11s) <<<
 ├── uploads/             # (otomatis) file upload sementara
 ├── outputs/             # (otomatis) hasil anotasi gambar/video
 └── static/              # frontend
