@@ -57,20 +57,7 @@ vehiscan/
 
 ## Yang perlu lo sesuaikan
 
-- **Urutan kelas** di `config.py` (`VEHICLE_CLASS_NAMES`) harus sama persis
-  dengan urutan class saat training (cek `data.yaml`).
-- **Nama file bobot** — default di `config.py`, ganti kalau nama file lo beda.
 - **YOLOv5 dari repo asli** (bukan ultralytics package) butuh loader beda —
   ada catatan & contoh kode di bagian bawah `detector.py`.
-- **Estimasi kecepatan** (yang ada di video referensi) belum diimplementasi
-  di sini karena butuh kalibrasi kamera (jarak piksel↔meter). Kalau mau,
-  bisa ditambahin di `video_jobs.py` pakai posisi track id antar frame +
-  konstanta kalibrasi.
-- Confidence threshold ada di `config.py` (`DEFAULT_CONF_THRESHOLD`,
-  `PLATE_OCR_CONF_THRESHOLD`).
+- **Estimasi kecepatan** Sesuaikan config dengan spek kalian agar kecepatan fps nya lebih sesuia dengan kemampuan pc kalian
 
-## Debugging
-
-Kalau ada error, response API selalu balik JSON `{"detail": "..."}` (lihat
-`unhandled_exception_handler` di `main.py`), dan traceback lengkap kecetak
-di terminal tempat `uvicorn` jalan — cek situ dulu kalau ada masalah.
