@@ -133,3 +133,13 @@ Model YOLOv5s, YOLOv8s, dan YOLOv11s dilatih menggunakan konfigurasi parameter y
 | F1-Score |
 |-----------|
 | ![](Training/YOLOv11s/BoxF1_curve.png) |
+
+## 📋 Perbandingan Performa Model
+
+Tabel berikut menunjukkan hasil evaluasi ketiga model berdasarkan metrik **Precision**, **Recall**, **F1-Score**, **mAP@0.5**, dan **mAP@0.5:0.95**.
+
+| Model | Precision | Recall | F1-Score | mAP@0.5 | mAP@0.5:0.95 |
+|:------:|:---------:|:------:|:--------:|:-------:|:------------:|
+| **YOLOv5s** | **0.920** | **0.950** | **0.950** | **0.967** | **0.830** |
+| **YOLOv8s** | **0.940** | **0.960** | **0.950** | **0.974** | **0.870** |
+| **YOLOv11s** | **0.950** | **0.960** | **0.960** | **0.978** | **0.890** |
