@@ -15,10 +15,10 @@ vehiscan/
 ├── pipeline.py         # gabungan: deteksi -> crop plat -> OCR -> gambar anotasi
 ├── video_jobs.py       # job background untuk proses video + tracking + progress
 ├── requirements.txt
-├── weights/            # >>> Model sudah ada (YOLO v5s,v8s,v11s) <<<
-├── uploads/             # (otomatis) file upload sementara
-├── outputs/             # (otomatis) hasil anotasi gambar/video
-└── static/              # frontend
+├── weights/            # Taruh model .pt disni (yolov11s_plate_ocr.pt, yolov11s_vehicle.pt, yolov5s_vehicle.pt, yolov8s_vehicle.pt)
+├── uploads/            # (otomatis) file upload sementara
+├── outputs/            # (otomatis) hasil anotasi gambar/video
+└── static/             # frontend
     ├── index.html
     ├── style.css
     └── script.js
@@ -58,6 +58,5 @@ vehiscan/
 ## Yang perlu lo sesuaikan
 
 - **YOLOv5 dari repo asli** (bukan ultralytics package) butuh loader beda —
-  ada catatan & contoh kode di bagian bawah `detector.py`.
 - **Estimasi kecepatan** Sesuaikan config dengan spek kalian agar kecepatan fps nya lebih sesuia dengan kemampuan pc kalian
 
