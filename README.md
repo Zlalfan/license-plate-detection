@@ -2,7 +2,7 @@
 
 Proyek ini merupakan sistem deteksi dan pembacaan plat nomor kendaraan berbasis Deep Learning menggunakan model YOLO. Sistem bekerja dalam dua tahap, yaitu mendeteksi lokasi plat nomor pada kendaraan, kemudian mendeteksi setiap karakter pada plat nomor menggunakan model YOLO yang telah dilatih secara khusus.
 
-Model deteksi plat nomor dibandingkan menggunakan tiga arsitektur, yaitu **YOLOv5s**, **YOLOv8s**, dan **YOLOv11s** untuk mengevaluasi performa berdasarkan metrik Precision, Recall, F1-Score, dan mAP@0.5. Selanjutnya, hasil deteksi plat nomor diproses oleh model YOLO karakter untuk menghasilkan susunan karakter plat nomor secara otomatis.
+Model deteksi plat nomor dibandingkan menggunakan tiga arsitektur, yaitu **YOLOv5s**, **YOLOv8s**, dan **YOLOv11s** untuk mengevaluasi performa berdasarkan metrik Precision, Recall, F1-Score, dan mAP@0.5. Selanjutnya, hasil deteksi plat nomor diproses oleh model YOLOv11s karakter untuk menghasilkan susunan karakter plat nomor secara otomatis.
 
 ## 📂 Dataset
 
@@ -34,7 +34,7 @@ Dataset deteksi plat nomor dikumpulkan secara langsung di wilayah Kota Bima dan 
 
 ### Dataset Deteksi Karakter
 
-Dataset deteksi karakter digunakan untuk melatih model YOLO agar mampu mengenali setiap karakter pada plat nomor kendaraan. Dataset ini diperoleh dari hasil *cropping* plat nomor, kemudian setiap huruf dan angka dianotasi menggunakan Roboflow.
+Dataset deteksi karakter digunakan untuk melatih model YOLOv11s agar mampu mengenali setiap karakter pada plat nomor kendaraan. Dataset ini diperoleh dari hasil *cropping* plat nomor, kemudian setiap huruf dan angka dianotasi menggunakan Roboflow.
 
 Dataset terdiri dari **4.167 citra** dengan **36 kelas karakter**, yaitu huruf **A–Z** dan angka **0–9**.
 
@@ -143,3 +143,20 @@ Tabel berikut menunjukkan hasil evaluasi ketiga model berdasarkan metrik **Preci
 | **YOLOv5s** | **0.920** | **0.950** | **0.950** | **0.967** | **0.830** |
 | **YOLOv8s** | **0.940** | **0.960** | **0.950** | **0.974** | **0.870** |
 | **YOLOv11s** | **0.950** | **0.960** | **0.960** | **0.978** | **0.890** |
+
+
+## 🌐 Implementasi Sistem
+
+Sistem diimplementasikan dalam bentuk aplikasi web menggunakan Flask. Pengguna dapat memilih model YOLO, mengunggah gambar atau video, kemudian sistem akan mendeteksi plat nomor dan membaca karakter secara otomatis.
+
+### Halaman Utama
+
+![Halaman Utama](L1.png)
+
+### Halaman Upload
+
+![Halaman Upload](L2.png)
+
+### Hasil Deteksi
+
+![Hasil Deteksi](L3.png)
