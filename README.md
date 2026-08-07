@@ -146,13 +146,15 @@ Tabel berikut menunjukkan hasil evaluasi ketiga model berdasarkan metrik **Preci
 
 ### Model Deteksi Karakter (YOLOv11s)
 
-Model pembaca karakter dilatih menggunakan **YOLOv11s** untuk mendeteksi huruf dan angka pada plat nomor kendaraan. Dataset yang digunakan terdiri dari **4.167 citra** dengan **36 kelas karakter** (A–Z dan 0–9). Hasil pelatihan menunjukkan bahwa model mampu mengenali karakter pada plat nomor dengan baik.
+Model deteksi karakter menggunakan **YOLOv11s** yang dilatih pada dataset berisi **4.167 citra** dengan **36 kelas karakter**, yaitu huruf **A–Z** dan angka **0–9**. Model ini bertugas mendeteksi setiap karakter pada plat nomor hasil *cropping* dari tahap deteksi plat nomor.
 
 #### Hasil Pelatihan
 
 ![YOLOv11 Character Results](Training/Karakter/results.png)
 
 #### Confusion Matrix
+
+Confusion matrix menunjukkan bahwa sebagian besar karakter berhasil dikenali dengan benar. Hal ini ditunjukkan oleh dominasi nilai pada diagonal utama, sedangkan kesalahan klasifikasi berada pada jumlah yang relatif kecil.
 
 ![YOLOv11 Character Confusion Matrix](Training/Karakter/confusion_matrix.png)
 
