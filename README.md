@@ -145,18 +145,20 @@ Tabel berikut menunjukkan hasil evaluasi ketiga model berdasarkan metrik **Preci
 | **YOLOv11s** | **0.950** | **0.960** | **0.960** | **0.978** | **0.890** |
 
 
-## 🌐 Implementasi Sistem
+## 🎯 Hasil Implementasi
 
-Sistem diimplementasikan dalam bentuk aplikasi web menggunakan Flask. Pengguna dapat memilih model YOLO, mengunggah gambar atau video, kemudian sistem akan mendeteksi plat nomor dan membaca karakter secara otomatis.
+### Contoh 1
 
-### Halaman Utama
+![Hasil Deteksi 1](L1.png)
 
-![Halaman Utama](L1.png)
+---
 
-### Halaman Upload
+### Contoh 2
 
-![Halaman Upload](L2.png)
+![Hasil Deteksi 2](L2.png)
 
-### Hasil Deteksi
+---
 
-![Hasil Deteksi](L3.png)
+### Contoh 3
+
+![Hasil Deteksi 3](L3.png)
