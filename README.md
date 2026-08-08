@@ -155,18 +155,18 @@ Model deteksi karakter menggunakan **YOLOv11s** yang dilatih pada dataset berisi
 
 ## 🎯 Hasil Implementasi
 
-### Contoh 1
+###
 
 ![Hasil Deteksi 1](L1.png)
 
 ---
 
-### Contoh 2
+###
 
 ![Hasil Deteksi 2](L2.png)
 
 ---
 
-### Contoh 3
+###
 
 ![Hasil Deteksi 3](L3.png)
