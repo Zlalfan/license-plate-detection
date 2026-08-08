@@ -152,12 +152,6 @@ Model deteksi karakter menggunakan **YOLOv11s** yang dilatih pada dataset berisi
 
 ![YOLOv11 Character Results](Training/Karakter/results.png)
 
-#### Confusion Matrix
-
-Confusion matrix menunjukkan bahwa sebagian besar karakter berhasil dikenali dengan benar. Hal ini ditunjukkan oleh dominasi nilai pada diagonal utama, sedangkan kesalahan klasifikasi berada pada jumlah yang relatif kecil.
-
-![YOLOv11 Character Confusion Matrix](Training/Karakter/confusion_matrix.png)
-
 
 ## 🎯 Hasil Implementasi
 
